@@ -1,6 +1,6 @@
 # TIC TAC TOE API
 
-Este projeto é uma API do jogo TIC-TAC-TOE que possui rotas que irão utilizar .
+Este projeto é uma API do jogo TIC-TAC-TOE que, de acordo com o status do jogo, prevê o resultado da partida.
 
 ## Instalação
 
