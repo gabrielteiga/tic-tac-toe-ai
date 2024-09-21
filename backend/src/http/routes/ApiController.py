@@ -13,5 +13,5 @@ def echo():
         return jsonify({'data': 'No data provided'}), 400
     return jsonify({'data':{'message':"Hello, {}!".format(data['name'])}}), 200
 
-def init(host, port):
+def initServer(host, port):
     app.run(debug=True, host=host, port=port)
