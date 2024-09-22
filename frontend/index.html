@@ -1,33 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tic Tac Toe - Jogue Contra a IA</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha o Algoritmo</title>
+    <!-- Link para o arquivo CSS compilado -->
+    <link rel="stylesheet" href="style-home.css">
 </head>
 <body>
-  <div class="game-container">
-    <header>
-      <div class="title">
-        <img src="img/tic-tac-x.png" alt="X" class="side-image">
-        <h1>Tic Tac Toe</h1>
-        <img src="img/tic-tac-o.png" alt="O" class="side-image">
-      </div>
-    </header>
-
-    <div class="score-board">
-      <span>Jogador: <span id="player-score">0</span></span>
-      <span>IA: <span id="ai-score">0</span></span>
+    <div class="game-container">
+        <h1>Escolha o Algoritmo</h1>
+        <div class="algorithm-options">
+            <button onclick="selectAlgorithm('knn')">K-NN</button>
+            <button onclick="selectAlgorithm('mlp')">MLP</button>
+            <button onclick="selectAlgorithm('decision-tree')">Árvores de Decisão</button>
+        </div>
     </div>
 
-    <div class="tic-tac-toe" id="game-board">
-      <!-- As células do jogo serão geradas dinamicamente aqui -->
-    </div>
-
-    <p id="game-status">Sua vez de jogar!</p>
-  </div>
-
-  <script src="script.js"></script>
+    <script>
+        // Função para selecionar o algoritmo e redirecionar para a página correspondente
+        function selectAlgorithm(algorithm) {
+            window.location.href = `game_${algorithm}.html`;
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha o Algoritmo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Escolha o Algoritmo</h1>
+        <div class="algorithm-options">
+            <button onclick="selectAlgorithm('knn')">K-NN</button>
+            <button onclick="selectAlgorithm('mlp')">MLP</button>
+            <button onclick="selectAlgorithm('decision-tree')">Árvores de Decisão</button>
+        </div>
+    </div>
+
+    <script>
+        // Função para selecionar o algoritmo e redirecionar para a página correspondente
+        function selectAlgorithm(algorithm) {
+            window.location.href = `game_${algorithm}.html`;
+        }
+    </script>
+
+    <!-- Scripts para envio de dados de diferentes algoritmos (mlp e decision-tree) -->
+    <script>
+        // Modifique apenas o valor do algoritmo no JSON para 'mlp'
+        function sendDataToBackendMLP() {
+            fetch('http://localhost:3000/game', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data: {
+                        algoritmo: 'mlp',  // Algoritmo específico desta página
+                        jogo: board
+                    }
+                })
+            })
+            .then(response => response.json())
+            .then(result => {
+                gameStatus.innerText = result.message;
+            });
+        }
+    </script>
+
+    <script>
+        // Modifique apenas o valor do algoritmo no JSON para 'decision-tree'
+        function sendDataToBackendDecisionTree() {
+            fetch('http://localhost:3000/game', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data: {
+                        algoritmo: 'decision-tree',  // Algoritmo específico desta página
+                        jogo: board
+                    }
+                })
+            })
+            .then(response => response.json())
+            .then(result => {
+                gameStatus.innerText = result.message;
+            });
+        }
+    </script>
+
+</body>
+</html>
