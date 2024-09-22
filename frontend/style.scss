@@ -23,10 +23,9 @@ body {
   
   .tic-tac-toe {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, 1fr); // Ajusta o grid para 3 colunas iguais
     gap: 10px;
-    justify-content: center;
+    justify-items: center;
     margin-bottom: 20px;
   }
   
@@ -37,8 +36,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 2.5rem; // Maior para os símbolos 'X' e 'O'
     cursor: pointer;
+    background-color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cell:hover {
+    background-color: #e0e0e0;
   }
   
   #game-status {
