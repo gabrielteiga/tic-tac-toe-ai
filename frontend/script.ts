@@ -5,11 +5,13 @@ const iaScoreEl = document.getElementById('ia-score');
 
 let playerScore = 0;
 let iaScore = 0;
-let currentPlayer = 'player';  // Alterna entre 'player' e 'ia'
-let board = Array(9).fill(null);  // Representação do tabuleiro
+let currentPlayer = 'player';  
+let board = Array(9).fill(null); 
+let gameActive = true;  
 
-// Simulação da IA (lógica mais simples, deve ser substituída pela lógica real do back-end)
 function iaPlay() {
+  if (!gameActive) return;  
+
   const emptyCells = board.map((val, index) => (val === null ? index : null)).filter(val => val !== null);
   const iaMove = emptyCells[Math.floor(Math.random() * emptyCells.length)];
   board[iaMove] = 'O';
@@ -34,41 +36,59 @@ function checkWin() {
     const [a, b, c] = combination;
     if (board[a] && board[a] === board[b] && board[a] === board[c]) {
       statusText!.textContent = `${board[a]} venceu!`;
-      if (board[a] === 'X') {
-        playerScore++;
-        playerScoreEl!.textContent = playerScore.toString();
-      } else {
-        iaScore++;
-        iaScoreEl!.textContent = iaScore.toString();
-      }
-      resetBoard();
+      gameActive = false;  
+      highlightWinningCombination(combination); 
+      updateScore(board[a]);
       return;
     }
   }
 
   if (board.every(cell => cell !== null)) {
     statusText!.textContent = 'Empate!';
-    resetBoard();
+    gameActive = false; 
   }
+}
+
+function updateScore(winner: string) {
+  if (winner === 'X') {
+    playerScore++;
+    playerScoreEl!.textContent = playerScore.toString();
+  } else {
+    iaScore++;
+    iaScoreEl!.textContent = iaScore.toString();
+  }
+
+  setTimeout(resetBoard, 2000);  
+}
+
+function highlightWinningCombination(combination: number[]) {
+  combination.forEach(index => {
+    cells[index].classList.add('winner');
+  });
 }
 
 function resetBoard() {
   board = Array(9).fill(null);
-  cells.forEach(cell => cell.textContent = '');
+  cells.forEach(cell => {
+    cell.textContent = '';
+    cell.classList.remove('winner'); 
+  });
+  statusText!.textContent = '';
   currentPlayer = 'player';
+  gameActive = true;  
 }
 
 cells.forEach(cell => {
   cell.addEventListener('click', () => {
     const cellIndex = parseInt(cell.id.split('-')[1]);
 
-    if (board[cellIndex] === null && currentPlayer === 'player') {
+    if (board[cellIndex] === null && currentPlayer === 'player' && gameActive) {
       board[cellIndex] = 'X';
       cell.textContent = 'X';
       currentPlayer = 'ia';
       checkWin();
-      if (currentPlayer === 'ia') {
-        setTimeout(iaPlay, 1000);  // A IA joga após um curto intervalo
+      if (gameActive && currentPlayer === 'ia') {
+        setTimeout(iaPlay, 1000);  
       }
     }
   });

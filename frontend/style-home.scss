@@ -6,16 +6,16 @@
     height: 100vh;
     background-color: #9adffa;
     font-family: Arial, sans-serif;
-    text-align: center;  // Centraliza todo o texto
+    text-align: center;  
 
     h1 {
-        font-size: 3rem;  // Aumentando o título principal
+        font-size: 3rem; 
         color: #333;
         margin-bottom: 30px;
     }
 
     .description {
-        font-size: 1.5rem;  // Texto abaixo do título
+        font-size: 1.5rem;
         color: #333;
         margin-bottom: 40px;
     }
@@ -23,16 +23,16 @@
     .algorithm-options {
         display: flex;
         gap: 20px;
-        margin-bottom: 50px;  // Adicionando espaçamento extra abaixo dos botões
+        margin-bottom: 50px;
 
         button {
             background-color: #09bbe7;
             color: white;
             border: none;
-            padding: 15px 30px;  // Botões maiores
-            font-size: 1.5rem;   // Tamanho do texto maior
+            padding: 15px 30px; 
+            font-size: 1.5rem;  
             cursor: pointer;
-            border-radius: 10px;  // Bordas mais arredondadas
+            border-radius: 10px;
             transition: background-color 0.3s ease;
 
             &:hover {

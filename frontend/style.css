@@ -63,6 +63,11 @@ h2 {
   font-size: 32px;
 }
 
+.winner {
+  background-color: #ffeb3b;
+  transition: background-color 0.5s ease;
+}
+
 .button {
   background-color: #4CAF50;
   color: white;
