@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escolha o Algoritmo</title>
-    <!-- Link para o arquivo CSS compilado -->
     <link rel="stylesheet" href="style-home.css">
 </head>
 <body>
     <div class="game-container">
-        <h1>Escolha o Algoritmo</h1>
+        <h1>Bem-vindo ao jogo de tic tac toe com a IA</h1>
+        <p class="description">Escolha qual será o algoritmo para o jogo:</p>
+    
         <div class="algorithm-options">
             <button onclick="selectAlgorithm('knn')">K-NN</button>
             <button onclick="selectAlgorithm('mlp')">MLP</button>
             <button onclick="selectAlgorithm('decision-tree')">Árvores de Decisão</button>
         </div>
+
+        <p class="group-members">
+            Integrantes do grupo: Ana Laura Lopes, Fernanda Uberti, 
+        </p>
     </div>
 
     <script>
-        // Função para selecionar o algoritmo e redirecionar para a página correspondente
         function selectAlgorithm(algorithm) {
+            // Redireciona para a página do jogo correspondente ao algoritmo
             window.location.href = `game_${algorithm}.html`;
         }
     </script>

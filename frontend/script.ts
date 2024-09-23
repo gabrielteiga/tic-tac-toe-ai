@@ -2,6 +2,7 @@ const cells = document.querySelectorAll('.cell');
 const statusText = document.getElementById('game-status');
 const playerScoreEl = document.getElementById('player-score');
 const iaScoreEl = document.getElementById('ia-score');
+
 let playerScore = 0;
 let iaScore = 0;
 let currentPlayer = 'player';  // Alterna entre 'player' e 'ia'

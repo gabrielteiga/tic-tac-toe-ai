@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe - Jogando com K-NN</title>
-    <link rel="stylesheet" href="style.css">  <!-- Adicione o link do CSS aqui -->
+    <title>Tic Tac Toe - MLP</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="game-container">
-        <h1>Tic Tac Toe - Jogando com K-NN</h1>
+        <h1>Tic Tac Toe - Jogando com MLP</h1>
         <div id="game-board" class="tic-tac-toe"></div>
         <div id="game-status">Sua vez de jogar!</div>
     </div>
@@ -35,28 +35,12 @@
                 board[index] = currentPlayer;
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
                 updateGameStatus();
-                sendDataToBackend();  // Enviar dados para o back-end
                 renderBoard();
             }
         }
 
-        function sendDataToBackend() {
-            fetch('http://localhost:3000/game', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    data: {
-                        algoritmo: 'knn',  // Algoritmo específico desta página
-                        jogo: board
-                    }
-                })
-            })
-            .then(response => response.json())
-            .then(result => {
-                gameStatus.innerText = result.message;
-            });
+        function updateGameStatus() {
+            gameStatus.innerText = `Vez do jogador ${currentPlayer}`;
         }
 
         renderBoard();
