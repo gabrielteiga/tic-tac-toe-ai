@@ -1,6 +1,13 @@
 from flask import Flask, request, jsonify
+import src.ai.algorithm.knn as knn
 
+knn = knn.KNN()
 app = Flask(__name__)
+
+@app.route('/knn', methods=['GET'])
+def knn_predict():
+    prediction = knn.predict()
+    return jsonify(prediction.tolist()), 200
 
 @app.route('/ping', methods=['GET'])
 def ping():
