@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
 import src.ai.algorithm.knn as knn
+import src.ai.algorithm.mlp as mlp
 
 knn = knn.KNN()
+mlp = mlp.MLP()
 app = Flask(__name__)
 
 @app.route('/ping', methods=['GET'])
@@ -18,6 +20,11 @@ def echo():
 @app.route('/knn', methods=['GET'])
 def knn_predict():
     prediction = knn.predict()
+    return jsonify(prediction.tolist()), 200
+
+@app.route('/mlp', methods=['GET'])
+def mlp_predict():
+    prediction = mlp.predict()
     return jsonify(prediction.tolist()), 200
 
 def initServer(host, port):
