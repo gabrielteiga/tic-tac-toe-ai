@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 import src.ai.algorithm.knn as knn
 import src.ai.algorithm.mlp as mlp
+import src.ai.algorithm.dtree as dtree
 
 knn = knn.KNN()
 mlp = mlp.MLP()
+dtree = dtree.DTree()
 app = Flask(__name__)
 
 @app.route('/ping', methods=['GET'])
@@ -25,6 +27,11 @@ def knn_predict():
 @app.route('/mlp', methods=['GET'])
 def mlp_predict():
     prediction = mlp.predict()
+    return jsonify(prediction.tolist()), 200
+
+@app.route('/dtree', methods=['GET'])
+def dtree_predict():
+    prediction = dtree.predict()
     return jsonify(prediction.tolist()), 200
 
 def initServer(host, port):
