@@ -1,4 +1,3 @@
-import pandas as pd
 from src.http.routes.ApiController import initServer
 
 if __name__ == '__main__':

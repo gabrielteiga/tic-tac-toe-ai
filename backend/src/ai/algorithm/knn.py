@@ -9,11 +9,11 @@ class KNN:
     __teste_path = os.path.join(os.path.dirname(__file__), '../../resources/dataset/dataset_teste.csv')
     teste_dataset = pd.read_csv(__teste_path)
     
-    n_neighbors = 4
+    n_neighbors = 0
     clf = None
 
     def __init__(self, n_neighbors=4):
-        self.n_neighbors = 1
+        self.n_neighbors = n_neighbors
         df = self.treino_dataset.applymap(self.__normalize)
 
         X = df.drop(columns=['Class']).values
