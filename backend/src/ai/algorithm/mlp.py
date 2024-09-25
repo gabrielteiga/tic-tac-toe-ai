@@ -21,10 +21,14 @@ class MLP:
         
         self.__train(X, y)
 
-    def predict(self, X = None):
+    def test(self):
         df = self.teste_dataset.applymap(self.__normalize)
         X = df.drop(columns=['Class']).values
-
+        return self.clf.predict(X)
+    
+    def predict(self, X = None):
+        df = pd.DataFrame([X]).applymap(self.__normalize)
+        X = df.values
         return self.clf.predict(X)
     
     def __train(self, X, y):

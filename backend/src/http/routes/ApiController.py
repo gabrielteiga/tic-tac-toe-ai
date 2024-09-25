@@ -12,26 +12,50 @@ app = Flask(__name__)
 def ping():
     return jsonify({'data': 'pong'}), 200
 
-@app.route('/echo', methods=['POST'])
-def echo():
+@app.route('/knn', methods=['GET'])
+def knn_test():
+    prediction = knn.test()
+    return jsonify(prediction.tolist()), 200
+
+@app.route('/knn/predict', methods=['POST'])
+def knn_predict():
+    data, error = getDataPost()
+    if error:
+        return error
+    return getPredict(data, knn)
+
+@app.route('/mlp', methods=['GET'])
+def mlp_test():
+    prediction = mlp.test()
+    return jsonify(prediction.tolist()), 200
+
+@app.route('/mlp/predict', methods=['POST'])
+def mlp_predict():
+    data, error = getDataPost()
+    if error:
+        return error
+    return getPredict(data, mlp)
+
+@app.route('/dtree', methods=['GET'])
+def dtree_test():
+    prediction = dtree.test()
+    return jsonify(prediction.tolist()), 200
+
+@app.route('/dtree/predict', methods=['POST'])
+def dtree_predict():
+    data, error = getDataPost()
+    if error:
+        return error
+    return getPredict(data, dtree)
+
+def getDataPost():
     data = request.get_json()
     if data is None:
         return jsonify({'error': 'No data provided'}), 400
-    return jsonify({'data':{'message':"Hello, {}!".format(data['name'])}}), 200
+    return data, False
 
-@app.route('/knn', methods=['GET'])
-def knn_predict():
-    prediction = knn.predict()
-    return jsonify(prediction.tolist()), 200
-
-@app.route('/mlp', methods=['GET'])
-def mlp_predict():
-    prediction = mlp.predict()
-    return jsonify(prediction.tolist()), 200
-
-@app.route('/dtree', methods=['GET'])
-def dtree_predict():
-    prediction = dtree.predict()
+def getPredict(data, model):
+    prediction = model.predict(data)
     return jsonify(prediction.tolist()), 200
 
 def initServer(host, port):
