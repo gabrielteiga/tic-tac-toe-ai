@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe - Árvore de Decisão</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Tic Tac Toe - Jogando com Árvore de Decisão</h1>
+        <div id="game-board" class="tic-tac-toe"></div>
+        <div id="game-status">Sua vez de jogar!</div>
+    </div>
+
+    <script>
+        const gameBoard = document.getElementById('game-board');
+        const gameStatus = document.getElementById('game-status');
+        const board = ['', '', '', '', '', '', '', '', ''];
+        let currentPlayer = 'X';
+
+        function renderBoard() {
+            gameBoard.innerHTML = '';
+            board.forEach((cell, index) => {
+                const cellElement = document.createElement('div');
+                cellElement.classList.add('cell');
+                cellElement.innerText = cell;
+                cellElement.addEventListener('click', () => handleCellClick(index));
+                gameBoard.appendChild(cellElement);
+            });
+        }
+
+        function handleCellClick(index) {
+            if (board[index] === '') {
+                board[index] = currentPlayer;
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                updateGameStatus();
+                renderBoard();
+            }
+        }
+
+        function updateGameStatus() {
+            gameStatus.innerText = `Vez do jogador ${currentPlayer}`;
+        }
+
+        renderBoard();
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha o Algoritmo</title>
+    <link rel="stylesheet" href="style-home.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Bem-vindo ao jogo de tic tac toe com a IA</h1>
+        <p class="description">Escolha qual será o algoritmo para o jogo:</p>
+    
+        <div class="algorithm-options">
+            <button onclick="selectAlgorithm('knn')">K-NN</button>
+            <button onclick="selectAlgorithm('mlp')">MLP</button>
+            <button onclick="selectAlgorithm('decision-tree')">Árvores de Decisão</button>
+        </div>
+
+        <p class="group-members">
+            Integrantes do grupo: Ana Laura Lopes, Fernanda Uberti, Gabriel Teiga e Endrew 
+        </p>
+    </div>
+
+    <script>
+        function selectAlgorithm(algorithm) {
+            window.location.href = `game_${algorithm}.html`;
+        }
+    </script>
+</body>
+</html>
