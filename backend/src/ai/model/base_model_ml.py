@@ -9,7 +9,7 @@ class BaseModelML(ABC):
     __teste_path = os.path.join(os.path.dirname(__file__), '../../resources/dataset/dataset_teste.csv')
     teste_dataset = pd.read_csv(__teste_path)
 
-    def __init__(self, n_neighbors=4):
+    def __init__(self):
         df = self.treino_dataset.applymap(self._normalize)
 
         self.X = df.drop(columns=['Class']).values
