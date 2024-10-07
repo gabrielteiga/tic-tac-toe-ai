@@ -4,5 +4,9 @@ from sklearn.neural_network import MLPClassifier
 class MLP(BaseModelML):
     def __init__(self):
         super().__init__()
+<<<<<<< HEAD
         self.clf = MLPClassifier(solver='adam', hidden_layer_sizes=(2,12), learning_rate_init=0.008, momentum=0.5, verbose=True, learning_rate='adaptive', max_iter=1300, warm_start = True, max_fun=20, n_iter_no_change=60)       
+=======
+        self.clf = MLPClassifier(solver='adam', hidden_layer_sizes=(2,12), learning_rate_init=0.008, momentum=0.5, verbose=True)       
+>>>>>>> 909c3ad80152bfe81d8cca5139476ee62016ef17
         self._train()
