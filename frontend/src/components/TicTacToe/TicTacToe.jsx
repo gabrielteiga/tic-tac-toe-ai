@@ -19,20 +19,20 @@ const TicTacToe = () => {
     if (lock || data[num] !== "b") {
       return;
     }
-
+  
     const newData = [...data];
     if (count % 2 === 0) {
       newData[num] = "x";
-      e.target.innerHTML = `<img src='${cross_img}' alt='X'>`;
+      e.target.innerHTML = `<img src='${cross_img}' alt='X' class='symbol'>`;  
     } else {
       newData[num] = "o";
-      e.target.innerHTML = `<img src='${circle_img}' alt='O'>`;
+      e.target.innerHTML = `<img src='${circle_img}' alt='O' class='symbol'>`; 
     }
     setData(newData);
     setCount(count + 1);
-
+  
     const args = newData.map(val => (val === "" ? "b" : val));
-
+  
     checkwin(newData);
     await checkKnn(args);
     await checkTree(args);
@@ -56,9 +56,9 @@ const TicTacToe = () => {
   const won = (winner) => {
     setLock(true);
     if (winner === "x") {
-      titleRef.current.innerHTML = `Winner: <img src=${cross_img} alt='X'>`;
+      titleRef.current.innerHTML = `Winner: <img src=${cross_img} alt='X' class='win'>`;
     } else {
-      titleRef.current.innerHTML = `Winner: <img src=${circle_img} alt='O'>`;
+      titleRef.current.innerHTML = `Winner: <img src=${circle_img} alt='O' class='win'>`;
     }
   }
 
@@ -109,32 +109,36 @@ const TicTacToe = () => {
     boxRefs.current.forEach(ref => ref.current.innerHTML = "");
   }
 
-  return (
-    <div className="container">
-      <h1 className="title" ref={titleRef}></h1>
-          <div className="title" ref={knnRef}></div>
-          <div className="title" ref={treeRef}></div>
-          <div className="title" ref={mlpRef}></div>
-      <div className="board">
-        <div className="row row1">
+return (
+  <div className="container">
+    <div className="inicial">
+    <h1 className="title" ref={titleRef}></h1>
+          <div className="subtitle" ref={knnRef}></div>
+          <div className="subtitle" ref={treeRef}></div>
+          <div className="subtitle" ref={mlpRef}></div>
+    </div>
+    <div className="game">
+    <div className="board">
+      <div className="row row1">
           <div className="cell" ref={boxRefs.current[0]} onClick={(e) => toggle(e, 0)}></div>
           <div className="cell" ref={boxRefs.current[1]} onClick={(e) => toggle(e, 1)}></div>
           <div className="cell" ref={boxRefs.current[2]} onClick={(e) => toggle(e, 2)}></div>
-        </div>
-        <div className="row row2">
+      </div>
+      <div className="row row2">
           <div className="cell" ref={boxRefs.current[3]} onClick={(e) => toggle(e, 3)}></div>
           <div className="cell" ref={boxRefs.current[4]} onClick={(e) => toggle(e, 4)}></div>
           <div className="cell" ref={boxRefs.current[5]} onClick={(e) => toggle(e, 5)}></div>
-        </div>
-        <div className="row row3">
+      </div>
+      <div className="row row3">
           <div className="cell" ref={boxRefs.current[6]} onClick={(e) => toggle(e, 6)}></div>
           <div className="cell" ref={boxRefs.current[7]} onClick={(e) => toggle(e, 7)}></div>
           <div className="cell" ref={boxRefs.current[8]} onClick={(e) => toggle(e, 8)}></div>
-        </div>
       </div>
-      <button className="reset" onClick={reset}>Reset</button>
     </div>
-  );
+    <button className="reset" onClick={reset}>Reset</button>
+    </div>
+  </div>
+);
 };
 
 export default TicTacToe;
