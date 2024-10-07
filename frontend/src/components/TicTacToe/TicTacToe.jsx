@@ -97,9 +97,8 @@ const TicTacToe = () => {
       return;
     }
     
-    console.log(`Winner from ${type}:`, winner); // Log para depuração
+    console.log(`Winner from ${type}:`, winner); 
 
-    // Converte o winner para número, caso seja uma string
     const predictionText = getPredictionText(Number(winner));
     ref.current.innerHTML = `${type}: ${predictionText}`;
   }
