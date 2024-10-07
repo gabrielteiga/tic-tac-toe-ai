@@ -119,17 +119,17 @@ return (
     </div>
     <div className="game">
     <div className="board">
-      <div className="row row1">
+      <div className="row">
           <div className="cell" ref={boxRefs.current[0]} onClick={(e) => toggle(e, 0)}></div>
           <div className="cell" ref={boxRefs.current[1]} onClick={(e) => toggle(e, 1)}></div>
           <div className="cell" ref={boxRefs.current[2]} onClick={(e) => toggle(e, 2)}></div>
       </div>
-      <div className="row row2">
+      <div className="row">
           <div className="cell" ref={boxRefs.current[3]} onClick={(e) => toggle(e, 3)}></div>
           <div className="cell" ref={boxRefs.current[4]} onClick={(e) => toggle(e, 4)}></div>
           <div className="cell" ref={boxRefs.current[5]} onClick={(e) => toggle(e, 5)}></div>
       </div>
-      <div className="row row3">
+      <div className="row">
           <div className="cell" ref={boxRefs.current[6]} onClick={(e) => toggle(e, 6)}></div>
           <div className="cell" ref={boxRefs.current[7]} onClick={(e) => toggle(e, 7)}></div>
           <div className="cell" ref={boxRefs.current[8]} onClick={(e) => toggle(e, 8)}></div>

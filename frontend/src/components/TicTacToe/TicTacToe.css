@@ -11,26 +11,24 @@ body, html {
 }
 
 .container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   background-color: #ffffff;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  width: 70rem;
+  width: 50rem;
   height: 35rem;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .inicial {
-  flex: 1;
-  text-align: center;
-}
-
-.game {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;
 }
 
 .title {
@@ -41,9 +39,10 @@ body, html {
 }
 
 .subtitle {
-  font-size: 18px;
+  font-size: 30px;
   color: #555;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .board {
@@ -52,9 +51,13 @@ body, html {
   gap: 10px;
 }
 
+.row {
+  margin: 5px;
+}
+
 .cell {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   background-color: #eee;
   display: flex;
   align-items: center;
@@ -69,6 +72,21 @@ body, html {
 
 .cell:hover {
   background-color: #ddd;
+}
+
+#game-status {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+.win {
+  width: 50px;
+  height: 50px;
+  filter: grayscale(100%);
+  font-size: 25px;
+  margin-left: 2rem;
+  margin-bottom: 20px;
 }
 
 .reset {
@@ -92,12 +110,6 @@ body, html {
   filter: grayscale(100%);
 }
 
-.win {
-  width: 50px;
-  height: 50px;
-  filter: grayscale(100%);
-}
-
 .algorithm-options button {
   margin: 8px;
   padding: 8px 16px;
@@ -113,5 +125,7 @@ body, html {
 .algorithm-options button:hover {
   background-color: #007BA7;
 }
+
+
 
 /*# sourceMappingURL=TicTacToe.css.map */

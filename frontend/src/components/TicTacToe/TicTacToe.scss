@@ -15,9 +15,21 @@ body, html {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  width: 30rem;
+  width: 50rem;
   height: 35rem;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.inicial{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;
 }
 
 .title {
@@ -28,15 +40,20 @@ body, html {
 }
 
 .subtitle {
-  font-size: 18px;
+  font-size: 30px;
   color: #555;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+}
+
+.row{
+  margin: 5px;
 }
 
 .cell {
@@ -65,8 +82,9 @@ body, html {
 }
 
 .winner {
-  background-color: #ffeb3b;
-  transition: background-color 0.5s ease;
+  font-size: 25px;
+  margin-left: 2rem;
+  margin-bottom: 20px;
 }
 
 .win{
