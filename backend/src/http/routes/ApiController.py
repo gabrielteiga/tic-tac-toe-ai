@@ -1,12 +1,15 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import src.ai.algorithm.knn as knn
 import src.ai.algorithm.mlp as mlp
 import src.ai.algorithm.dtree as dtree
 
+app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
+
 knn = knn.KNN()
 mlp = mlp.MLP()
 dtree = dtree.DTree()
-app = Flask(__name__)
 
 @app.route('/ping', methods=['GET'])
 def ping():
@@ -52,7 +55,7 @@ def getDataPost():
     data = request.get_json()
     if data is None:
         return jsonify({'error': 'No data provided'}), 400
-    return data, False
+    return data["data"], False
 
 def getPredict(data, model):
     prediction = model.predict(data)
