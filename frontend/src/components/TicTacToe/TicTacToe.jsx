@@ -68,31 +68,22 @@ const TicTacToe = () => {
   };
 
   const toggle = async (e, num) => {
-    console.log("iniciando toggle")
     if (lock || data[num] !== "b") {
-      console.log('aqui entrou no if do lock toggle')
+      console.log('jogada bloqueada')
       return;
     }
     
-    console.log("count: ",count)
     const newData = [...data];
-    // if (count % 2 === 0) {
-      newData[num] = "x";
-      e.target.innerHTML = `<img src='${cross_img}' alt='X' class='symbol'>`;
-      setData(newData);
-      setCount(count + 2);
-      console.log("count: ",count)
+    newData[num] = "x";
+    e.target.innerHTML = `<img src='${cross_img}' alt='X' class='symbol'>`;
+    setData(newData);
 
-      const winner = checkwin(newData);
-      console.log(count)
-      console.log(winner)
-      if (winner) {
-        won(winner);
-      } else {
-        computerPlay(newData);
-      // }
+    const winner = checkwin(newData);
+    if (winner) {
+      won(winner);
+    } else {
+      computerPlay(newData);
     }
-    console.log("finalizando toggle")
   };
 
   const computerPlay = (newData) => {
@@ -100,7 +91,6 @@ const TicTacToe = () => {
 
     let computerMove;
     const random = Math.random();
-    console.log("antes")
     
     if (difficulty === "easy") {
       if (random < 0.25) {
